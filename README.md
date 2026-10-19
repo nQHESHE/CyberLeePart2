@@ -41,3 +41,4 @@ Project Files
 Conclusion
 
 CyberLee demonstrates basic object-oriented programming, graphical interface development, chatbot logic and speech functionality in C#.
+CyberLee is a cybersecurity awareness chatbot developed using C# and WPF.
