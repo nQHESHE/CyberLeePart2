@@ -1,0 +1,119 @@
+﻿<Window x:Class="CyberLeePart2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CyberLee - Cybersecurity Assistant"
+        Height="650" Width="850"
+        MinHeight="550" MinWidth="650"
+        WindowStartupLocation="CenterScreen"
+        Background="#F2F5FA">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="#172554"
+                CornerRadius="12"
+                Padding="18"
+                Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="CYBERLEE"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+
+                <TextBlock Text="Your Cybersecurity Awareness Assistant"
+                           FontSize="14"
+                           Foreground="#BFDBFE"
+                           HorizontalAlignment="Center"
+                           Margin="0,5,0,0"/>
+
+                <TextBlock x:Name="LogoText"
+                           Text="  [ CYBERLEE ]&#10;  Stay alert. Stay safe. Stay secure."
+                           FontFamily="Consolas"
+                           FontSize="12"
+                           Foreground="#86EFAC"
+                           TextAlignment="Center"
+                           Margin="0,12,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Chat area -->
+        <Border Grid.Row="1"
+                Background="White"
+                BorderBrush="#D8E0EE"
+                BorderThickness="1"
+                CornerRadius="12"
+                Padding="12"
+                Margin="0,0,0,15">
+            <TextBox x:Name="ChatPanel"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Disabled"
+                     BorderThickness="0"
+                     Background="White"
+                     Foreground="#172033"
+                     FontSize="14"
+                     Padding="8"/>
+        </Border>
+
+        <!-- Message input -->
+        <Grid Grid.Row="2" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="MessageInput"
+                     Grid.Column="0"
+                     Height="44"
+                     FontSize="14"
+                     Padding="10"
+                     VerticalContentAlignment="Center"
+                     ToolTip="Type your cybersecurity question"
+                     KeyDown="MessageInput_KeyDown" Text="hello"/>
+
+            <Button Grid.Column="1"
+                    Content="Send"
+                    Height="44"
+                    Margin="10,0,0,0"
+                    Background="#2563EB"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    Click="SendButton_Click"/>
+        </Grid>
+
+        <!-- Clear button and footer -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Content="Clear Chat"
+                    Padding="14,8"
+                    Background="#E2E8F0"
+                    Foreground="#172033"
+                    BorderThickness="0"
+                    Click="ClearButton_Click"/>
+
+            <TextBlock Grid.Column="1"
+                       Text="Think before you click. Protect your information."
+                       Foreground="#475569"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       TextWrapping="Wrap"
+                       Margin="10,0,0,0"/>
+        </Grid>
+    </Grid>
+</Window>
