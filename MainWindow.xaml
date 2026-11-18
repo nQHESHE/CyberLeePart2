@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="CyberLee - Cybersecurity Assistant"
-        Height="650" Width="850"
-        MinHeight="550" MinWidth="650"
+        Height="700" Width="950"
+        MinHeight="600" MinWidth="750"
         WindowStartupLocation="CenterScreen"
         Background="#F2F5FA">
 
@@ -12,14 +12,13 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
         <Border Grid.Row="0"
                 Background="#172554"
                 CornerRadius="12"
-                Padding="18"
+                Padding="15"
                 Margin="0,0,0,15">
             <StackPanel>
                 <TextBlock Text="CYBERLEE"
@@ -31,89 +30,285 @@
                 <TextBlock Text="Your Cybersecurity Awareness Assistant"
                            FontSize="14"
                            Foreground="#BFDBFE"
-                           HorizontalAlignment="Center"
-                           Margin="0,5,0,0"/>
+                           HorizontalAlignment="Center"/>
 
                 <TextBlock x:Name="LogoText"
-                           Text="  [ CYBERLEE ]&#10;  Stay alert. Stay safe. Stay secure."
+                           Text="[ CYBERLEE ]&#10;Stay alert. Stay safe. Stay secure."
                            FontFamily="Consolas"
                            FontSize="12"
                            Foreground="#86EFAC"
                            TextAlignment="Center"
-                           Margin="0,12,0,0"/>
+                           Margin="0,10,0,0"/>
             </StackPanel>
         </Border>
 
-        <!-- Chat area -->
-        <Border Grid.Row="1"
-                Background="White"
-                BorderBrush="#D8E0EE"
-                BorderThickness="1"
-                CornerRadius="12"
-                Padding="12"
-                Margin="0,0,0,15">
-            <TextBox x:Name="ChatPanel"
-                     IsReadOnly="True"
-                     TextWrapping="Wrap"
-                     AcceptsReturn="True"
-                     VerticalScrollBarVisibility="Auto"
-                     HorizontalScrollBarVisibility="Disabled"
-                     BorderThickness="0"
-                     Background="White"
-                     Foreground="#172033"
-                     FontSize="14"
-                     Padding="8"/>
-        </Border>
+        <!-- Main navigation -->
+        <TabControl Grid.Row="1"
+                    x:Name="tabMain"
+                    FontSize="14">
 
-        <!-- Message input -->
-        <Grid Grid.Row="2" Margin="0,0,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
+            <!-- CHAT TAB -->
+            <TabItem Header="Chat">
+                <Grid Margin="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-            <TextBox x:Name="MessageInput"
-                     Grid.Column="0"
-                     Height="44"
-                     FontSize="14"
-                     Padding="10"
-                     VerticalContentAlignment="Center"
-                     ToolTip="Type your cybersecurity question"
-                     KeyDown="MessageInput_KeyDown" Text="hello"/>
+                    <TextBox x:Name="ChatPanel"
+                             Grid.Row="0"
+                             IsReadOnly="True"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             VerticalScrollBarVisibility="Auto"
+                             BorderThickness="1"
+                             BorderBrush="#D8E0EE"
+                             Background="White"
+                             Foreground="#172033"
+                             FontSize="14"
+                             Padding="10"
+                             Margin="0,0,0,12"/>
 
-            <Button Grid.Column="1"
-                    Content="Send"
-                    Height="44"
-                    Margin="10,0,0,0"
-                    Background="#2563EB"
-                    Foreground="White"
-                    FontWeight="Bold"
-                    BorderThickness="0"
-                    Click="SendButton_Click"/>
-        </Grid>
+                    <Grid Grid.Row="1" Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
 
-        <!-- Clear button and footer -->
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                        <TextBox x:Name="MessageInput"
+                                 Grid.Column="0"
+                                 Height="44"
+                                 FontSize="14"
+                                 Padding="10"
+                                 VerticalContentAlignment="Center"
+                                 ToolTip="Type your cybersecurity question"
+                                 KeyDown="MessageInput_KeyDown"/>
 
-            <Button Grid.Column="0"
-                    Content="Clear Chat"
-                    Padding="14,8"
-                    Background="#E2E8F0"
-                    Foreground="#172033"
-                    BorderThickness="0"
-                    Click="ClearButton_Click"/>
+                        <Button Grid.Column="1"
+                                Content="Send"
+                                Height="44"
+                                Margin="10,0,0,0"
+                                Background="#2563EB"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                BorderThickness="0"
+                                Click="SendButton_Click"/>
+                    </Grid>
 
-            <TextBlock Grid.Column="1"
-                       Text="Think before you click. Protect your information."
-                       Foreground="#475569"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Right"
-                       TextWrapping="Wrap"
-                       Margin="10,0,0,0"/>
-        </Grid>
+                    <Button Grid.Row="2"
+                            Content="Clear Chat"
+                            HorizontalAlignment="Left"
+                            Padding="14,8"
+                            Background="#E2E8F0"
+                            Foreground="#172033"
+                            BorderThickness="0"
+                            Click="ClearButton_Click"/>
+                </Grid>
+            </TabItem>
+
+            <!-- TASK ASSISTANT TAB -->
+            <TabItem Header="Task Assistant">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Cybersecurity Tasks"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Foreground="#172554"
+                                   Margin="0,0,0,12"/>
+
+                        <TextBlock Text="Task title"/>
+                        <TextBox x:Name="txtTaskTitle"
+                                 Height="32"
+                                 Margin="0,5,0,10"/>
+
+                        <TextBlock Text="Task description"/>
+                        <TextBox x:Name="txtTaskDescription"
+                                 Height="65"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 Margin="0,5,0,10"/>
+
+                        <CheckBox x:Name="chkUseReminder"
+                                  Content="Set a reminder"
+                                  Margin="0,0,0,8"/>
+
+                        <DatePicker x:Name="dtpReminder"
+                                    Height="32"
+                                    Margin="0,0,0,12"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="dgvTasks"
+                              Grid.Row="1"
+                              AutoGenerateColumns="True"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              Margin="0,10"
+                              Background="White"/>
+
+                    <WrapPanel Grid.Row="2"
+           Margin="0,10,0,0">
+
+                        <Button x:Name="btnAddTask"
+            Content="Add Task"
+            Padding="15,8"
+            Margin="0,0,8,5"
+            Click="btnAddTask_Click"/>
+
+                        <Button x:Name="btnCompleteTask"
+            Content="Complete Task"
+            Padding="15,8"
+            Margin="0,0,8,5"
+            Click="btnCompleteTask_Click"/>
+
+                        <Button x:Name="btnDeleteTask"
+            Content="Delete Task"
+            Padding="15,8"
+            Margin="0,0,8,5"
+            Click="btnDeleteTask_Click"/>
+
+                        <Button x:Name="btnRefreshTasks"
+            Content="Refresh Tasks"
+            Padding="15,8"
+            Margin="0,0,8,5"
+            Click="btnRefreshTasks_Click"/>
+
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- CYBERSECURITY QUIZ TAB -->
+            <TabItem Header="Cyber Quiz">
+                <StackPanel Margin="20">
+
+                    <TextBlock Text="Cybersecurity Knowledge Quiz"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   Foreground="#172554"
+                   Margin="0,0,0,15"/>
+
+                    <TextBlock x:Name="lblQuestionNumber"
+                   Text="Question 0 of 12"
+                   FontWeight="Bold"
+                   Margin="0,0,0,12"/>
+
+                    <TextBlock x:Name="lblQuestion"
+                   Text="Press Start Quiz to begin."
+                   FontSize="17"
+                   TextWrapping="Wrap"
+                   Margin="0,0,0,20"/>
+
+                    <RadioButton x:Name="rdoA"
+                     GroupName="QuizAnswers"
+                     Content="Option A"
+                     Margin="0,8"/>
+
+                    <RadioButton x:Name="rdoB"
+                     GroupName="QuizAnswers"
+                     Content="Option B"
+                     Margin="0,8"/>
+
+                    <RadioButton x:Name="rdoC"
+                     GroupName="QuizAnswers"
+                     Content="Option C"
+                     Margin="0,8"/>
+
+                    <RadioButton x:Name="rdoD"
+                     GroupName="QuizAnswers"
+                     Content="Option D"
+                     Margin="0,8"/>
+
+                    <WrapPanel Margin="0,20,0,10">
+
+                        <Button x:Name="btnStartQuiz"
+                    Content="Start Quiz"
+                    Padding="15,8"
+                    Margin="0,0,10,5"
+                    Click="btnStartQuiz_Click"/>
+
+                        <Button x:Name="btnSubmitAnswer"
+                    Content="Submit Answer"
+                    Padding="15,8"
+                    Margin="0,0,10,5"
+                    Click="btnSubmitAnswer_Click"/>
+
+                        <Button x:Name="btnNextQuestion"
+                    Content="Next Question"
+                    Padding="15,8"
+                    Margin="0,0,10,5"
+                    Click="btnNextQuestion_Click"/>
+
+                    </WrapPanel>
+
+                    <TextBlock x:Name="lblQuizFeedback"
+                   Text="Your feedback will appear here."
+                   Foreground="#2563EB"
+                   TextWrapping="Wrap"
+                   Margin="0,10"/>
+
+                    <TextBlock x:Name="lblQuizScore"
+                   Text="Score: 0"
+                   FontWeight="Bold"
+                   FontSize="16"
+                   Margin="0,10"/>
+
+                </StackPanel>
+            </TabItem>
+
+            <!-- ACTIVITY LOG TAB -->
+            <TabItem Header="Activity Log">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Recent CyberLee Activities"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Foreground="#172554"
+                   Margin="0,0,0,15"/>
+
+                    <ListBox x:Name="lstActivity"
+                 Grid.Row="1"
+                 FontSize="14"
+                 Background="White"
+                 BorderBrush="#D8E0EE"/>
+
+                    <WrapPanel Grid.Row="2"
+                   Margin="0,12,0,0">
+
+                        <Button x:Name="btnRefreshActivity"
+                    Content="Refresh Activity"
+                    Padding="15,8"
+                    Margin="0,0,10,5"
+                    Click="btnRefreshActivity_Click"/>
+
+                        <Button x:Name="btnShowMore"
+                    Content="Show More"
+                    Padding="15,8"
+                    Margin="0,0,10,5"
+                    Click="btnShowMore_Click"/>
+
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+        <!-- Footer -->
+        <TextBlock Grid.Row="2"
+                   Text="Think before you click. Protect your information."
+                   Foreground="#475569"
+                   HorizontalAlignment="Center"
+                   Margin="0,12,0,0"/>
     </Grid>
 </Window>
