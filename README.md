@@ -85,7 +85,7 @@ How to Run
 3. Create the CyberSecurityBotDB database and required tables.
 4. Open the CyberLee solution in Visual Studio.
 5. Restore the required NuGet packages.
-6. Configure the MySQL connection in DatabaseConfig.cs.
+6. Create a windows environment variable named CYBERLEE_DB_CONNECTION containing your local MySQL connection string. Do not upload your database password to GitHub
 7. Build the solution.
 8. Run the application using the green Start button in Visual Studio.
 
